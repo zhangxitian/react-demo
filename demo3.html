@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>3</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.min.js"></script>
+</head>
+<body>
+    <div id="demo"></div>
+    <script type="text/babel">
+        var FirstComponent=React.createClass({
+            render:function (){
+                return(
+                    <div>
+                        {this.props.name} first Component!
+                        <ChildComponent>
+                            <li>child1</li>
+                            <li>child2</li>
+                            <li>child3</li>
+                        </ChildComponent>
+                        <LoopChild>
+                            <a href="#">child4</a>
+                            <a href="#">child5</a>
+                        </LoopChild>
+                    </div>
+                );
+            }
+        });
+        var ChildComponent=React.createClass({
+           render:function(){
+               return <ol>{this.props.children}</ol>
+           }
+        });
+        var LoopChild=React.createClass({
+           render:function(){
+               return (
+                   <ul>{
+                       React.Children.map(this.props.children,function(list){
+                           return <li>{list}</li>;
+                       })
+                    }
+                   </ul>
+               )
+           }
+        });
+        ReactDOM.render(
+            <FirstComponent name="my"/>,
+            document.getElementById("demo")
+        )
+    </script>
+</body>
+</html>

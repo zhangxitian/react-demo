@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hello world</title>
+    <script src="./react.js"></script>
+    <script src="./react-dom.js"></script>
+    <script src="./browser.min.js"></script>
+</head>
+<body>
+    <div id="demo1"></div>
+    <div id="demo2"></div>
+    <script type="text/babel">
+        ReactDOM.render(
+            <h1>hello world!</h1>,
+            document.getElementById("demo1")
+        );
+
+        var names=[1,2,3];
+        ReactDOM.render(
+            <div>
+                {
+                    names.map(function(name){
+                        return <h2>name:{name}</h2>
+                    })
+                }
+            </div>,
+            document.getElementById("demo2")
+        )
+    </script>
+</body>
+</html>
